@@ -39,23 +39,33 @@
         </nav>
     </header>
 
-    <main>
-    <?php
-        echo "<table border = 1 id = 'borda'>";
-        echo "<tr> <td id = 'top'> CODIGO </td> <td id = 'top'> NOME </td> <td id = 'top'> IDADE </td> <td id = 'top'> CPF </td> <td id = 'top'> SITUAÇÃO </td></tr>";
-        while ($registro = mysqli_fetch_assoc($resultado)){
-            $codigo = $registro["CDCRIANCA"];
-            $nome = $registro["NMCRIANCA"];
-            $idade = $registro["NU_IDADE"];
-            $cpf = $registro["NU_CPF"];
-            $situacao = $registro["DS_SITUACAO"];
-            $sexo = $registro["DS_SEXO"];
-        
-            echo "<tr> <td> $codigo </td> <td> $nome </td> <td> $idade </td> <td> $cpf </td> <td> $situacao </td> <td> $sexo </td> <td><a href='excluir_cliente.php?codigo=$codigo'>
-            <img src= 'excluir.png' > </a></td></tr>";
-        }
-        echo "</table>";
-        ?>
+    <main class="home">
+        <div class="conteudo">
+            <div class="tabela">
+                <div class="cabecalho">
+                    <h1>Gerenciamento de Crianças</h1>
+                    <div class="continue-button">
+                        <button><a href="#">Cadastrar</a> </button>
+                    </div>
+                </div>
+                <?php
+                    echo "<table border = 1 id = 'borda'>";
+                    echo "<tr> <td id = 'top'> CODIGO </td> <td id = 'top'> NOME </td> <td id = 'top'> IDADE </td> <td id = 'top'> CPF </td> <td id = 'top'> SITUAÇÃO </td></tr>";
+                    while ($registro = mysqli_fetch_assoc($resultado)){
+                        $codigo = $registro["CDCRIANCA"];
+                        $nome = $registro["NMCRIANCA"];
+                        $idade = $registro["NU_IDADE"];
+                        $cpf = $registro["NU_CPF"];
+                        $situacao = $registro["DS_SITUACAO"];
+                        $sexo = $registro["DS_SEXO"];
+                    
+                        echo "<tr> <td> $codigo </td> <td> $nome </td> <td> $idade </td> <td> $cpf </td> <td> $situacao </td> <td> $sexo </td> <td><a href='excluir_cliente.php?codigo=$codigo'>
+                        <img src= 'excluir.png' > </a></td></tr>";
+                    }
+                    echo "</table>";
+                ?>
+            </div>
+        </div>
     </main>
 </body>
 </html>

@@ -76,7 +76,6 @@ body{
 }
 .home{
     width: 100%;
-    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -108,6 +107,40 @@ body{
 }
 .home-btn:hover{
     background: #fc4c35;
+}
+.home .conteudo{
+    width: 100%;
+}
+.home .tabela{
+    width: 100%;
+    margin-top: 15vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.tabela .cabecalho{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.continue-button button {/* botão continuar -- cor e estilo */
+    border: none;
+    background-color: #6c63ff;
+    padding: 0.62rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.continue-button button:hover { /* hover do botão continuar */
+    background-color: #6b63fff1
+}
+
+.continue-button button a {/*letra do botão continuar -- cor e estilo*/
+    text-decoration: none;
+    font-size: 0.93rem;
+    font-weight: 500;
+    color: white;
 }
 @media (max-width:785px) {
     .navigation{
