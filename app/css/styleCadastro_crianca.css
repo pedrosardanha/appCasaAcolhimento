@@ -16,7 +16,7 @@ body {
 }
 
 .container {
-    width: 65%;
+    width: 67.5%;
     height: 80vh;
     display: flex;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.212);
@@ -205,7 +205,7 @@ form{
 }
 
 .custom-select select:focus-visible {/* margem ao redor do botão */
-    outline: 1px solid rgb(0, 0, 0);
+    outline: 1px solidrgb(23, 23, 255)(0, 0, 0);
 }
 
 .input-box label, .custom-select label,
@@ -254,7 +254,7 @@ select option{
 }
 
 .continue-button button {/* botão continuar -- cor e estilo */
-    width: 100%;
+    width: 25vh;
     margin-top: 2.5rem;
     border: none;
     background-color: #6c63ff;
@@ -272,6 +272,32 @@ select option{
     font-size: 0.93rem;
     font-weight: 500;
     color: white;
+}
+
+.cancel-button button {/* botão continuar -- cor e estilo */
+    width: 25vh;
+    margin-top: 2.5rem;
+    border: none;
+    border-color: #6c63ff;
+    border-style: solid;
+    border-width: 2px;
+    background: #fff;
+    padding: 0.62rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cancel-button button a {/*letra do botão continuar -- cor e estilo*/
+    text-decoration: none;
+    font-size: 0.93rem;
+    font-weight: 500;
+    color: #6c63ff;
+}
+
+
+.button-group{
+    display: flex;
+    justify-content: space-between;
 }
 
 @media screen and (max-width: 1330px) {

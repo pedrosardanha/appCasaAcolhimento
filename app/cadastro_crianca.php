@@ -11,16 +11,16 @@
 </head>
 
 <?php
-include_once("conexao.php");
+    include_once("conexao.php");
 
-$sql = "SELECT * FROM tb_crianca";
-$resultado = mysqli_query ($conn, $sql) or die ("ERRO.");
-$total = mysqli_num_rows($resultado);
+    $sql = "SELECT * FROM tb_crianca";
+    $resultado = mysqli_query ($conn, $sql) or die ("ERRO.");
+    $total = mysqli_num_rows($resultado);
 ?>
 <body>
     <div class="container">
         <div class="form">
-            <form action="cc_inserir.php" method="post">
+            <form action="conexao_crianca.php" method="post">
                 <div class="form-header">
                     <div class="title">
                         <h1>Cadastro de Criança</h1>
@@ -79,31 +79,18 @@ $total = mysqli_num_rows($resultado);
                         </div>
                     </div>
                 </div>
-
-                <div class="continue-button">
-                    <button><a href="#">Continuar</a> </button>
+                
+                <div class="button-group">
+                    <div class="cancel-button">
+                        <button><a href="#">Cancelar</a> </button>
+                    </div>
+                    <div class="continue-button">
+                        <button><a href="tabela_crianca.php">Cadastrar</a> </button>
+                    </div>
                 </div>
             </form>
         </div>
     </div>
-
-    
-    <?php
-        echo "<TABLE border = 1 id = 'borda'>";
-        echo "<TR> <TD id = 'top'> CODIGO </TD> <TD id = 'top'> NOME </TD> <TD id = 'top'> IDADE </TD> <TD id = 'top'> CPF </TD> <TD id = 'top'> SITUAÇÃO </TD></TR>";
-        while ($registro = mysqli_fetch_assoc($resultado)){
-            $codigo = $registro["CDCRIANCA"];
-            $nome = $registro["NMCRIANCA"];
-            $idade = $registro["NU_IDADE"];
-            $cpf = $registro["NU_CPF"];
-            $situacao = $registro["DS_SITUACAO"];
-            $sexo = $registro["DS_SEXO"];
-        
-            echo "<TR> <TD> $codigo </TD> <TD> $nome </TD> <TD> $idade </TD> <TD> $cpf </TD> <TD> $situacao </TD> <TD> $sexo </TD> <TD><A href='excluir_cliente.php?codigo=$codigo'>
-            <IMG src= 'excluir.png' > </A></TD></TR>";
-        }
-        echo "</table>";
-        ?>
 </body>
 
 
