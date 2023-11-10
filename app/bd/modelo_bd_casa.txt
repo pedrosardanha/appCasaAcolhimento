@@ -1,181 +1,119 @@
--- MySQL Workbench Forward Engineering
-
-SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
-SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
-
--- -----------------------------------------------------
--- Schema bd_casa_acolhimento
--- -----------------------------------------------------
-
--- -----------------------------------------------------
--- Schema bd_casa_acolhimento
--- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `bd_casa_acolhimento` DEFAULT CHARACTER SET utf8 tb_crianca;
-USE `bd_casa_acolhimento` ;
-
--- -----------------------------------------------------
--- Table `bd_casa_acolhimento`.`tb_crianca`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `bd_casa_acolhimento`.`tb_crianca` (
-  `CDCRIANCA` SMALLINT(6) AUTO_INCREMENT,
-  `NMCRIANCA` VARCHAR(40) NOT NULL,
-  `NU_IDADE` SMALLINT(6) NOT NULL,
-  `NU_CPF` SMALLINT(6) NOT NULL,
-  `DS_SITUACAO` VARCHAR(50) NOT NULL,
-  PRIMARY KEY (`CDCRIANCA`),
-  UNIQUE INDEX `CDCRIANCA_UNIQUE` (`CDCRIANCA` ASC))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-DROP table tb_crianca;
--- -----------------------------------------------------
--- Table `bd_casa_acolhimento`.`tb_adocao`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `bd_casa_acolhimento`.`tb_adocao` (
-  `CDADOCAO` SMALLINT(6) NOT NULL,
-  `DTADOCAO` DATE NOT NULL,
-  `DSADOCAO` VARCHAR(50) NOT NULL,
-  `NMRESPONSAVEL` VARCHAR(40) NOT NULL,
-  `DSENDERECO` VARCHAR(50) NOT NULL,
-  `CDCRIANCA` SMALLINT(6) NOT NULL,
-  PRIMARY KEY (`CDADOCAO`),
-  INDEX `fk_CD_DA_CRIANCA` (`CDCRIANCA` ASC),
-  UNIQUE INDEX `CDADOCAO_UNIQUE` (`CDADOCAO` ASC),
-  CONSTRAINT `fk_CD_DA_CRIANCA`
-    FOREIGN KEY (`CDCRIANCA`)
-    REFERENCES `bd_casa_acolhimento`.`tb_crianca` (`CDCRIANCA`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+create database bd_casa_acolhimento;
+use bd_casa_acolhimento;
 
 
--- -----------------------------------------------------
--- Table `bd_casa_acolhimento`.`tb_apadrinhamento`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `bd_casa_acolhimento`.`tb_apadrinhamento` (
-  `CDAPAD` SMALLINT(6) NOT NULL,
-  `DTAPAD` DATE NOT NULL,
-  `DSENDERECO` VARCHAR(50) NOT NULL,
-  `HRDURACAO` DATETIME NOT NULL,
-  `NMRESPONSAVEL` VARCHAR(40) NOT NULL,
-  `CDCRIANCA` SMALLINT(6) NOT NULL,
-  PRIMARY KEY (`CDAPAD`),
-  INDEX `fk_CD_CRIANCA` (`CDCRIANCA` ASC),
-  UNIQUE INDEX `CDAPAD_UNIQUE` (`CDAPAD` ASC),
-  CONSTRAINT `fk_CD_CRIANCA`
-    FOREIGN KEY (`CDCRIANCA`)
-    REFERENCES `bd_casa_acolhimento`.`tb_crianca` (`CDCRIANCA`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
 
 
--- -----------------------------------------------------
--- Table `bd_casa_acolhimento`.`tb_educador`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `bd_casa_acolhimento`.`tb_educador` (
-  `CDEDUCADOR` SMALLINT(6) NOT NULL,
-  `NMEDUCADOR` VARCHAR(40) NOT NULL,
-  `NU_CPF` SMALLINT(6) NOT NULL,
-  `NU_IDADE` SMALLINT(6) NOT NULL,
-  `VL_SALARIO` SMALLINT(6) NOT NULL,
-  `DSTIPO_ATIVIDADE` VARCHAR(50) NOT NULL,
-  `DSENDERECO` VARCHAR(50) NOT NULL,
-  PRIMARY KEY (`CDEDUCADOR`),
-  UNIQUE INDEX `CDEDUCADOR_UNIQUE` (`CDEDUCADOR` ASC))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+create table if not exists tb_crianca (
 
+    CDCRIANCA SMALLINT auto_increment,
+    NMCRIANCA VARCHAR(40) NOT NULL,
+    NU_IDADE SMALLINT  NOT NULL,
+    NU_CPF VARCHAR(14) NOT NULL,
+    DS_SITUACAO VARCHAR(50) NOT NULL,
+    DS_SEXO VARCHAR(10) NOT NULL,
+    PRIMARY KEY (CDCRIANCA)
 
--- -----------------------------------------------------
--- Table `bd_casa_acolhimento`.`tb_entrada_saida`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `bd_casa_acolhimento`.`tb_entrada_saida` (
-  `CDETSD` SMALLINT(6) NOT NULL,
-  `DTENTRADA` DATE NOT NULL,
-  `DESCRICAO` VARCHAR(50) NOT NULL,
-  `DTSAIDA` DATE NOT NULL,
-  `CDCRIANCA` SMALLINT(6) NOT NULL,
-  PRIMARY KEY (`CDETSD`),
-  INDEX `fk_CDCRIANCA` (`CDCRIANCA` ASC),
-  UNIQUE INDEX `CDETSD_UNIQUE` (`CDETSD` ASC),
-  CONSTRAINT `fk_CDCRIANCA`
-    FOREIGN KEY (`CDCRIANCA`)
-    REFERENCES `bd_casa_acolhimento`.`tb_crianca` (`CDCRIANCA`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+);
 
+CREATE TABLE IF NOT EXISTS tb_adocao (
+  CDADOCAO SMALLINT(6) NOT NULL,
+  DTADOCAO DATE NOT NULL,
+  DSADOCAO VARCHAR(50) NOT NULL,
+  NMRESPONSAVEL VARCHAR(40) NOT NULL,
+  DSENDERECO VARCHAR(50) NOT NULL,
+  CDCRIANCA SMALLINT(6) NOT NULL,
+  PRIMARY KEY (CDADOCAO),
+  CONSTRAINT fk_tb_adocao_CDCRIANCA
+    FOREIGN KEY (CDCRIANCA)
+    REFERENCES tb_crianca (CDCRIANCA)
 
--- -----------------------------------------------------
--- Table `bd_casa_acolhimento`.`tb_toma`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `bd_casa_acolhimento`.`tb_toma` (
-  `CDEDUCADOR` SMALLINT(6) NOT NULL,
-  `DTAPLICACAO` DATE NOT NULL,
-  `HRAPLICACAO` DATETIME NOT NULL,
-  `DSDOSE` VARCHAR(50) NULL DEFAULT NULL,
-  `tb_crianca_CDCRIANCA` SMALLINT(6) NOT NULL,
-  `tb_educador_CDEDUCADOR` SMALLINT(6) NOT NULL,
-  PRIMARY KEY (`CDEDUCADOR`),
-  INDEX `fk_tb_toma_tb_crianca1_idx` (`tb_crianca_CDCRIANCA` ASC),
-  INDEX `fk_tb_toma_tb_educador1_idx` (`tb_educador_CDEDUCADOR` ASC),
-  UNIQUE INDEX `CDEDUCADOR_UNIQUE` (`CDEDUCADOR` ASC),
-  CONSTRAINT `fk_tb_toma_tb_crianca1`
-    FOREIGN KEY (`tb_crianca_CDCRIANCA`)
-    REFERENCES `bd_casa_acolhimento`.`tb_crianca` (`CDCRIANCA`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_tb_toma_tb_educador1`
-    FOREIGN KEY (`tb_educador_CDEDUCADOR`)
-    REFERENCES `bd_casa_acolhimento`.`tb_educador` (`CDEDUCADOR`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+);
 
+CREATE TABLE IF NOT EXISTS tb_apadrinhamento (
+  CDAPAD SMALLINT(6) NOT NULL,
+  DTAPAD DATE NOT NULL,
+  DSENDERECO VARCHAR(50) NOT NULL,
+  HRDURACAO DATETIME NOT NULL,
+  NMRESPONSAVEL VARCHAR(40) NOT NULL,
+  CDCRIANCA SMALLINT(6) NOT NULL,
+  PRIMARY KEY (CDAPAD),
+  CONSTRAINT fk_tb_apadrinhamento_CDCRIANCA
+    FOREIGN KEY (CDCRIANCA)
+    REFERENCES tb_crianca (CDCRIANCA)
 
--- -----------------------------------------------------
--- Table `bd_casa_acolhimento`.`tb_medicamento`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `bd_casa_acolhimento`.`tb_medicamento` (
-  `CDMEDICAMENTO` SMALLINT(6) NOT NULL,
-  `NMMEDICAMENTO` VARCHAR(40) NOT NULL,
-  `QTESTOQUE` SMALLINT(6) NOT NULL,
-  `tb_toma_CDEDUCADOR` SMALLINT(6) NOT NULL,
-  `tb_toma_DTAPLICACAO` DATE NOT NULL,
-  `tb_toma_HRAPLICACAO` DATETIME NOT NULL,
-  PRIMARY KEY (`CDMEDICAMENTO`),
-  INDEX `fk_tb_medicamento_tb_toma1_idx` (`tb_toma_CDEDUCADOR` ASC, `tb_toma_DTAPLICACAO` ASC, `tb_toma_HRAPLICACAO` ASC),
-  UNIQUE INDEX `CDMEDICAMENTO_UNIQUE` (`CDMEDICAMENTO` ASC),
-  CONSTRAINT `fk_tb_medicamento_tb_toma1`
-    FOREIGN KEY (`tb_toma_CDEDUCADOR` , `tb_toma_DTAPLICACAO` , `tb_toma_HRAPLICACAO`)
-    REFERENCES `bd_casa_acolhimento`.`tb_toma` (`CDEDUCADOR` , `DTAPLICACAO` , `HRAPLICACAO`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+);
 
+CREATE TABLE if not exists tb_educador (
+  CDEDUCADOR SMALLINT auto_increment,
+  NMEDUCADOR VARCHAR(40) NOT NULL,
+  NU_CPF varchar(14) NOT NULL,
+  DSEMAIL varchar(40) not null,
+  NU_CEL varchar(20) not null,
+  VL_SALARIO decimal(10,2) NOT NULL,
+  NU_IDADE SMALLINT NOT NULL,
+  DSGENERO varchar(15) not null,
+  DSTIPO_ATIVIDADE VARCHAR(50) NOT NULL,
+  DSENDERECO VARCHAR(50) NOT NULL,
+    primary key(CDEDUCADOR)
 
--- -----------------------------------------------------
--- Table `bd_casa_acolhimento`.`tb_refeicao`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `bd_casa_acolhimento`.`tb_refeicao` (
-  `CDREFEICAO` SMALLINT(6) NOT NULL,
-  `NMREFEICAO` VARCHAR(30) NOT NULL,
-  `DTREFEICAO` DATE NOT NULL,
-  `DSREFEICAO` VARCHAR(50) NOT NULL,
-  `tb_educador_CDEDUCADOR` SMALLINT(6) NOT NULL,
-  PRIMARY KEY (`CDREFEICAO`),
-  INDEX `fk_tb_refeicao_tb_educador1_idx` (`tb_educador_CDEDUCADOR` ASC),
-  UNIQUE INDEX `CDREFEICAO_UNIQUE` (`CDREFEICAO` ASC),
-  CONSTRAINT `fk_tb_refeicao_tb_educador1`
-    FOREIGN KEY (`tb_educador_CDEDUCADOR`)
-    REFERENCES `bd_casa_acolhimento`.`tb_educador` (`CDEDUCADOR`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+);
 
+CREATE TABLE IF NOT EXISTS tb_entrada_saida (
+  CDETSD SMALLINT(6) NOT NULL,
+  DTENTRADA DATE NOT NULL,
+  DESCRICAO VARCHAR(50) NOT NULL,
+  DTSAIDA DATE NOT NULL,
+  CDCRIANCA SMALLINT(6) NOT NULL,
+  PRIMARY KEY (CDETSD),
+  CONSTRAINT fk_tb_entrada_saida_CDCRIANCA
+    FOREIGN KEY (CDCRIANCA)
+    REFERENCES tb_crianca (CDCRIANCA)
 
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+);
+
+CREATE TABLE IF NOT EXISTS tb_medicamento (
+    CDMEDICAMENTO SMALLINT(6) NOT NULL,
+    NMMEDICAMENTO VARCHAR(40) NOT NULL,
+    QTESTOQUE SMALLINT(6) NOT NULL,
+    CDEDUCADOR SMALLINT(6) NOT NULL,
+    DTAPLICACAO DATE NOT NULL,
+    HRAPLICACAO DATETIME NOT NULL,
+    PRIMARY KEY (CDMEDICAMENTO),
+    CONSTRAINT fk_tb_medicamento_CDEDUCADOR
+        FOREIGN KEY (CDEDUCADOR)
+        REFERENCES tb_educador (CDEDUCADOR)
+);
+
+CREATE TABLE IF NOT EXISTS tb_toma (
+    CDEDUCADOR SMALLINT(6) NOT NULL,
+    DTAPLICACAO DATE NOT NULL,
+    HRAPLICACAO DATETIME NOT NULL,
+    DSDOSE VARCHAR(50) NULL DEFAULT NULL,
+    CDCRIANCA SMALLINT(6) NOT NULL,
+    
+    PRIMARY KEY (CDEDUCADOR),
+    CONSTRAINT fk_tb_toma_CDCRIANCA
+        FOREIGN KEY (CDCRIANCA)
+        REFERENCES tb_crianca (CDCRIANCA),
+        
+    CONSTRAINT fk_tb_toma_CDEDUCADOR
+        FOREIGN KEY (CDEDUCADOR)
+        REFERENCES tb_educador (CDEDUCADOR)
+        
+	
+
+);
+
+CREATE TABLE IF NOT EXISTS tb_refeicao (
+    CDREFEICAO SMALLINT(6) NOT NULL,
+    NMREFEICAO VARCHAR(30) NOT NULL,
+    DTREFEICAO DATE NOT NULL,
+    DSREFEICAO VARCHAR(50) NOT NULL,
+    CDEDUCADOR SMALLINT(6) NOT NULL,
+    PRIMARY KEY (CDREFEICAO),
+    CONSTRAINT fk_tb_refeicao_CDEDUCADOR
+        FOREIGN KEY (CDEDUCADOR)
+        REFERENCES tb_educador (CDEDUCADOR)
+
+);
