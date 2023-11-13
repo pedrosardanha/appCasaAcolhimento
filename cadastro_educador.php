@@ -35,7 +35,7 @@
 
                     <div class="input-box">
                         <label for="identification">CPF</label>
-                        <input id="cpf" type="text" maxlength="14" name="NU_CPF" placeholder="xxx.xxx.xxx-xx" required>
+                        <input id="cpf" type="text" maxlength="14" onkeyup="handleCpf(event)" name="NU_CPF" placeholder="xxx.xxx.xxx-xx" required>
                     </div>
                     <div class="input-box">
                         <label for="email">E-mail</label>
