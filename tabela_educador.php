@@ -13,8 +13,8 @@
 <?php
     include_once("conexao.php");
 
-    $sql = "SELECT * FROM tb_crianca";
-    $resultado = mysqli_query($conn, $sql) or die("ERRO.");
+    $sql = "SELECT * FROM tb_educador";
+    $resultado = mysqli_query ($conn, $sql) or die ("ERRO.");
     $total = mysqli_num_rows($resultado);
 ?>
 
@@ -48,41 +48,43 @@
             <div class="tabela">
                 <div class="form-header">
                     <div class="title">
-                        <h1>Gerenciamento de Crianças</h1>
+                        <h1>Gerenciamento de Educadores</h1>
                     </div>
                     <div class="continue-button">
-                        <button class="cadastrar"><a href="cadastro_crianca.php">Cadastrar</a></button>
+                        <button class="cadastrar"><a href="cadastro_educador.php">Cadastrar</a></button>
                     </div>
                 </div>
                 <div class="corpo">
                     <?php
                         echo "<table class='content-table'>";
-                        echo "<thead> <tr> <td id='top'> NOME </td> <td id='top'> IDADE </td> <td id='top'> CPF </td> <td id='top'> SITUAÇÃO </td><td id='top'> SEXO </td><td id='top'></td></tr></thead>";
+                        echo "<thead> <tr> <td id = 'top'> NOME </td> <td id = 'top'> CPF </td> <td id = 'top'> EMAIL </td> <td id = 'top'> CELULAR </td> <td id = 'top'> SALARIO </td> <td> </td> </tr></thead>";
                         while ($registro = mysqli_fetch_assoc($resultado)) {
-                            $codigo = $registro["CDCRIANCA"];
-                            $nome = $registro["NMCRIANCA"];
-                            $idade = $registro["NU_IDADE"];
+                            $codigo = $registro["CDEDUCADOR"];
+                            $nome = $registro["NMEDUCADOR"];
                             $cpf = $registro["NU_CPF"];
-                            $situacao = $registro["DS_SITUACAO"];
-                            $sexo = $registro["DS_SEXO"];
+                            $email = $registro["DSEMAIL"];
+                            $celular = $registro["NU_CEL"];
+                            $salario = $registro["VL_SALARIO"];
+                            $idade = $registro["NU_IDADE"];
+                            $genero = $registro["DSGENERO"];
 
                             echo"<tr>
-                                    <td> $nome </td> 
-                                    <td> $idade </td> 
-                                    <td> $cpf </td> 
-                                    <td> $situacao </td> 
-                                    <td> $sexo </td> 
-                                    <td class='buttons'>
-                                        <div class='button-group'>
-                                            <div class='edit-button'>
-                                                <button><a href='edit_crianca.php?id=$codigo'><i class='bx bxs-edit'></i></a></button>
-                                            </div>
-                                            <div class='delete-button'>
-                                                <button><a href='detele_crianca.php?id=$codigo'><i class='bx bx-trash'></i></a></button>
-                                            </div>
+                                <td> $nome </td> 
+                                <td> $cpf </td> 
+                                <td> $email </td> 
+                                <td> $celular </td> 
+                                <td> $salario </td> 
+                                <td class='buttons'>
+                                    <div class='button-group'>
+                                        <div class='edit-button'>
+                                            <button><a href='edit_crianca.php?id=$codigo'><i class='bx bxs-edit'></i></a></button>
                                         </div>
-                                    </td>
-                                </tr>";
+                                        <div class='delete-button'>
+                                            <button><a href='delete_educador.php?id=$codigo'><i class='bx bx-trash'></i></a></button>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>";
                         }
                         echo "</table>";
                     ?>

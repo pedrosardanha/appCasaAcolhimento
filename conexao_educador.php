@@ -17,6 +17,7 @@ $insere = "INSERT INTO tb_educador VALUES ('', '$nome', '$cpf', '$email', '$celu
 $resultado = mysqli_query ($conn, $insere);
 
 
-require_once('cadastro_funcionario.php');
+header('Location: tabela_educador.php');
+exit();
 
 ?>

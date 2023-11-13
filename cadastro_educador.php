@@ -5,25 +5,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styleCadastro_funcionario.css">
-    <title>Cadastro de Criança</title>
+    <link rel="stylesheet" href="css/style_cadastro.css">
+    <title>Cadastro de Educador</title>
 </head>
 
 <?php
-include_once("conexao.php");
+    include_once("conexao.php");
 
-$sql = "SELECT * FROM tb_educador";
-$resultado = mysqli_query ($conn, $sql) or die ("ERRO.");
-$total = mysqli_num_rows($resultado);
+    $sql = "SELECT * FROM tb_educador";
+    $resultado = mysqli_query ($conn, $sql) or die ("ERRO.");
+    $total = mysqli_num_rows($resultado);
 ?>
 
 <body>
     <div class="container">
         <div class="form">
-            <form action="cf_inserir.php" method="post">
+            <form action="conexao_educador.php" method="post">
                 <div class="form-header">
                     <div class="title">
-                        <h1>Cadastro de Funcionario</h1>
+                        <h1>Cadastro de Educador</h1>
                     </div>
                 </div>
 
@@ -87,32 +87,17 @@ $total = mysqli_num_rows($resultado);
                     </div>
                 </div>
 
-                <div class="continue-button">
-                    <button><a href="#">Continuar</a> </button>
+                <div class="button-group">
+                    <div class="cancel-button">
+                        <button><a href="#">Cancelar</a> </button>
+                    </div>
+                    <div class="continue-button">
+                        <button><a href="tabela_educador.php">Cadastrar</a> </button>
+                    </div>
                 </div>
             </form>
         </div>
     </div>
-
-    <?php
-        echo "<TABLE border = 1 id = 'borda'>";
-        echo "<TR> <TD id = 'top'> CODIGO </TD> <TD id = 'top'> NOME </TD> <TD id = 'top'> CPF </TD> <TD id = 'top'> EMAIL </TD> <TD id = 'top'> CELULAR </TD> <TD id = 'top'> SALARIO </TD> <TD id = 'top'> IDADE </TD> <TD id = 'top'> GENERO </TD> </TR>";
-        while ($registro = mysqli_fetch_assoc($resultado)){
-            $codigo = $registro["CDEDUCADOR"];
-            $nome = $registro["NMEDUCADOR"];
-            $cpf = $registro["NU_CPF"];
-            $email = $registro["DSEMAIL"];
-            $celular = $registro["NU_CEL"];
-            $salario = $registro["VL_SALARIO"];
-            $idade = $registro["NU_IDADE"];
-            $genero = $registro["DSGENERO"];
-        
-            echo "<TR> <TD> $codigo </TD> <TD> $nome </TD> <TD> $cpf </TD> <TD> $email </TD> <TD> $celular </TD> <TD> $salario </TD> <TD> $idade </TD> <TD> $genero </TD> </TR>";
-        }
-        echo "</table>";
-        
-        ?>
-
 </body>
 
 </html>
