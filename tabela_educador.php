@@ -77,7 +77,7 @@
                                 <td class='buttons'>
                                     <div class='button-group'>
                                         <div class='edit-button'>
-                                            <button><a href='edit_crianca.php?id=$codigo'><i class='bx bxs-edit'></i></a></button>
+                                            <button><a href='editar_educador.php?id=$codigo'><i class='bx bxs-edit'></i></a></button>
                                         </div>
                                         <div class='delete-button'>
                                             <button><a href='delete_educador.php?id=$codigo'><i class='bx bx-trash'></i></a></button>

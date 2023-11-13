@@ -20,7 +20,7 @@
 <body>
     <div class="container">
         <div class="form">
-            <form action="conexao_educador.php" method="post">
+            <form action="conexao_educador.php?acao=cadastrar" method="post">
                 <div class="form-header">
                     <div class="title">
                         <h1>Cadastro de Educador</h1>
