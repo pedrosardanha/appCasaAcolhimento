@@ -35,7 +35,7 @@
 
                     <div class="input-box">
                         <label for="identification">CPF</label>
-                        <input id="NU_CPF" type="text" name="NU_CPF" placeholder="xxx.xxx.xxx-xx" required>
+                        <input id="cpf" type="text" maxlength="14" name="NU_CPF" placeholder="xxx.xxx.xxx-xx" required>
                     </div>
                     <div class="input-box">
                         <label for="email">E-mail</label>
@@ -44,7 +44,7 @@
 
                     <div class="input-box">
                         <label for="number">Celular</label>
-                        <input id="NU_CEL" type="tel" name="NU_CEL" placeholder="(xx) xxxxx-xxxx" required>
+                        <input id="NU_CEL" type="tel" maxlength="15" onkeyup="handlePhone(event)" name="NU_CEL" placeholder="(xx) xxxxx-xxxx" required>
                     </div>
 
                     <div class="input-box">
@@ -98,6 +98,8 @@
             </form>
         </div>
     </div>
+
+    <script src="js/mascaras_cadastro.js"></script>
 </body>
 
 </html>

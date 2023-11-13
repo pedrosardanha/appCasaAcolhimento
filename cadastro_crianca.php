@@ -42,7 +42,7 @@
                     <div class="input-group-2">
                         <div class="input-box">
                             <label for="cpf">CPF</label>
-                            <input id="cpf" type="text" name="NU_CPF" placeholder="xxx.xxx.xxx-xx" required>
+                            <input id="cpf" type="text" maxlength="14" name="NU_CPF" placeholder="xxx.xxx.xxx-xx" required>
                         </div>
 
                         <div class="input-box">
@@ -91,6 +91,8 @@
             </form>
         </div>
     </div>
+    
+    <script src="js/mascaras_cadastro.js"></script>
 </body>
 
 
