@@ -1,27 +1,27 @@
 <?php
-include_once('conexao.php');
+    include_once('conexao.php');
 
-if (!empty($_GET['id'])) {
-    $id = $_GET['id'];
+    if (!empty($_GET['id'])) {
+        $id = $_GET['id'];
 
-    // Use o objeto de conexão $conn ao invés de $conexao
-    $sqlSelect = "SELECT * FROM tb_crianca WHERE CDCRIANCA=$id";
-    $result = $conn->query($sqlSelect);
+        // Use o objeto de conexão $conn ao invés de $conexao
+        $sqlSelect = "SELECT * FROM tb_crianca WHERE CDCRIANCA=$id";
+        $result = $conn->query($sqlSelect);
 
-    if ($result && $result->num_rows > 0) {
-        $sqlDelete = "DELETE FROM tb_crianca WHERE CDCRIANCA=$id";
-        $resultDelete = $conn->query($sqlDelete);
+        if ($result && $result->num_rows > 0) {
+            $sqlDelete = "DELETE FROM tb_crianca WHERE CDCRIANCA=$id";
+            $resultDelete = $conn->query($sqlDelete);
 
-        if ($resultDelete) {
-            echo "Registro excluído com sucesso!";
+            if ($resultDelete) {
+                echo "Registro excluído com sucesso!";
+            } else {
+                echo "Erro ao excluir registro: " . $conn->error;
+            }
         } else {
-            echo "Erro ao excluir registro: " . $conn->error;
+            echo "Registro não encontrado.";
         }
-    } else {
-        echo "Registro não encontrado.";
     }
-}
 
-header('Location: tabela_crianca.php');
-exit();
+    header('Location: tabela_crianca.php');
+    exit();
 ?>
