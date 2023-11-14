@@ -46,8 +46,12 @@
                         </div>
 
                         <div class="input-box">
-                            <label for="number">Situação</label>
-                            <input id="number" type="text" name="DS_SITUACAO" placeholder="Situação da Criança" required>
+                            <label >Situação</label>
+                            <select name="DS_SITUACO" id="situacao">
+                                <option value="" selected disabled> Situação</option>        
+                                <option value="Disponível" selected>Disponível</option>
+                                <option value="Indisponível">indisponivel</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -75,7 +79,7 @@
 
                         <div class="gender-input">
                             <input id="none" type="radio" name="DS_SEXO" value="Não Informou">
-                            <label for="none" value="Não Informou">Prefiro não dizer</label>
+                            <label for="none" value="Não Informou">Não Informou</label>
                         </div>
                     </div>
                 </div>
