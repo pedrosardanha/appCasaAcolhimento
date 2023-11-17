@@ -12,7 +12,7 @@
 <body>
     <div class="container">
         <div class="form">
-            <form action="#">
+            <form action="conexao_medicamento.php" method="post">
                 <div class="form-header">
                     <div class="title">
                         <h1>Cadastro de Medicamento</h1>
@@ -23,7 +23,7 @@
                     <div class="input-group-2">
                         <div class="input-box">
                             <label for="medicineName">Nome do Medicamento</label>
-                            <input id="medicineName" type="text" name="NMCRIANCA" placeholder="Nome do Medicamento" required>
+                            <input id="medicineName" type="text" name="NMMEDICAMENTO" placeholder="Nome do Medicamento" required>
                         </div>
 
                         <div class="input-box">
@@ -46,23 +46,23 @@
 
                     <div class="gender-group">
                         <div class="gender-input">
-                            <input id="female" type="radio" name="DS_SEXO" value="Feminino">
-                            <label for="female" value="Volume">Volume</label>
+                            <input id="volume" type="radio" name="DSDOSAGEM" value="Volume">
+                            <label for="volume" value="Volume">Volume</label>
                         </div>
 
                         <div class="gender-input">
-                            <input id="male" type="radio" name="DS_SEXO" value="Masculino">
-                            <label for="male" value="Miligramas">Miligramas</label>
+                            <input id="miligramas" type="radio" name="DSDOSAGEM" value="Miligramas">
+                            <label for="miligramas" value="Miligramas">Miligramas</label>
                         </div>
 
                         <div class="gender-input">
-                            <input id="others" type="radio" name="DS_SEXO" value="Outros">
-                            <label for="others" value="Unidade">Unidade</label>
+                            <input id="unidade" type="radio" name="DSDOSAGEM" value="Unidade">
+                            <label for="unidade" value="Unidade">Unidade</label>
                         </div>
 
                         <div class="gender-input">
-                            <input id="none" type="radio" name="DS_SEXO" value="Não Informou">
-                            <label for="none" value="Gotas">Gotas</label>
+                            <input id="gotas" type="radio" name="DSDOSAGEM" value="Gotas">
+                            <label for="gotas" value="Gotas">Gotas</label>
                         </div>
                     </div>
                 </div>
