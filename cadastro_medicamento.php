@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styleCadastro_medicamento.css">
- 
+    <link rel="stylesheet" href="css/style_cadastro.css">
     <title>Cadastro de Medicamento</title>
 </head>
 
@@ -23,68 +22,62 @@
                 <div class="input-group">
                     <div class="input-group-2">
                         <div class="input-box">
-                            <label for="firstname">Nome do Medicamento</label>
-                            <input id="firstname" type="text" name="NMCRIANCA" placeholder="Nome do Medicamento" required>
+                            <label for="medicineName">Nome do Medicamento</label>
+                            <input id="medicineName" type="text" name="NMCRIANCA" placeholder="Nome do Medicamento" required>
                         </div>
 
                         <div class="input-box">
-                            <label for="identification">Dose</label>
-                            <input id="identification" type="text" name="NU_IDADE" placeholder="Valor da Dose" required>
+                            <label for="dose">Estoque Atual</label>
+                            <input id="dose" type="text" name="QTESTOQUE" placeholder="Quantidade Disponível" required>
                         </div>
                     </div>
                     <div class="input-group-2">
-                        <div class="custom-select">
-                            <label for="cpf">Tipo de Dose</label>
-                            <Select>
-                                <option value="" selected>Selecione um Tipo</option>
-                                <option value="1">Volume</option>
-                                <option value="2">Miligramas</option>
-                                <option value="3">Unidade</option>
-                            </Select>
-                        </div>
-
-                        <div class="input-box">
-                            <label for="number">Situação</label>
-                            <input id="number" type="text" name="DS_SITUACAO" placeholder="Situação da Criança" required>
+                        <div class="text-box">
+                            <label for="medicineName">Descrição do Uso</label>
+                            <textarea name="DSUSO" id="dsuso" cols="30" rows="10" maxlength="250"></textarea>
                         </div>
                     </div>
                 </div>
-            
+
                 <div class="gender-inputs">
                     <div class="gender-title">
-                        <h6>Gênero</h6>
+                        <h6>Dosagem</h6>
                     </div>
 
                     <div class="gender-group">
                         <div class="gender-input">
-                            <input id="female" type="radio" name="gender">
-                            <label for="female">Feminino</label>
+                            <input id="female" type="radio" name="DS_SEXO" value="Feminino">
+                            <label for="female" value="Volume">Volume</label>
                         </div>
 
                         <div class="gender-input">
-                            <input id="male" type="radio" name="gender">
-                            <label for="male">Masculino</label>
+                            <input id="male" type="radio" name="DS_SEXO" value="Masculino">
+                            <label for="male" value="Miligramas">Miligramas</label>
                         </div>
 
                         <div class="gender-input">
-                            <input id="others" type="radio" name="gender">
-                            <label for="others">Outros</label>
+                            <input id="others" type="radio" name="DS_SEXO" value="Outros">
+                            <label for="others" value="Unidade">Unidade</label>
                         </div>
 
                         <div class="gender-input">
-                            <input id="none" type="radio" name="gender">
-                            <label for="none">Prefiro não dizer</label>
+                            <input id="none" type="radio" name="DS_SEXO" value="Não Informou">
+                            <label for="none" value="Gotas">Gotas</label>
                         </div>
                     </div>
                 </div>
 
-                <div class="continue-button">
-                    <button><a href="#">Continuar</a> </button>
+                <div class="button-group">
+                    <div class="cancel-button">
+                        <button><a href="#">Cancelar</a></button>
+                    </div>
+                    <div class="continue-button">
+                        <button><a href="tabela_medicamento.php">Cadastrar</a></button>
+                    </div>
                 </div>
             </form>
         </div>
     </div>
-    <script type="text/javascript" src="js/cadastro_medicamento.js"></script>
 </body>
 
 </html>

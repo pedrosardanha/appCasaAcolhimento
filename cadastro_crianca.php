@@ -45,7 +45,7 @@
                             <input id="cpf" type="text" maxlength="14" onkeyup="handleCpf(event)" name="NU_CPF" placeholder="xxx.xxx.xxx-xx" required>
                         </div>
 
-                        <div class="input-box">
+                        <div class="custom-select">
                             <label >Situação</label>
                             <select name="DS_SITUACO" id="situacao">
                                 <option value="" selected disabled> Situação</option>        
