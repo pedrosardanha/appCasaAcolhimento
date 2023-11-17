@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="css/styleIndex.css">
+    <link rel="stylesheet" href="css/style_index.css">
     <title>Bem-Vindo!</title>
 </head>
 <body>
@@ -56,8 +56,8 @@
                 <h1>Gerenciar Educador</h1>
             </div>
             <div class="imagem">
-                <a href="cadastrar_funcionario.php">
-                    <img class="" src="img/foto_crianca.jpg">
+                <a href="tabela_educador.php">
+                    <img class="" src="img/foto_educador.jpg">
                 </a>
             </div>
             <div class="continue-button">
@@ -70,12 +70,12 @@
                 <h1>Gerenciar Medicamento</h1>
             </div>
             <div class="imagem">
-                <a href="cadastrar_funcionario.php">
-                    <img class="" src="img/foto_crianca.jpg">
+                <a href="tabela_medicamento.php">
+                    <img class="" src="img/foto_remedio.png">
                 </a>
             </div>
             <div class="continue-button">
-                <button><a href="tabela_educador.php">Entrar</a> </button>
+                <button><a href="tabela_medicamento.php">Entrar</a> </button>
             </div>
         </div>
     </div>
